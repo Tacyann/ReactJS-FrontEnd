@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Header from '.src/Header';
+import Logon from './pages/Logon';
 
 function App() {
   return (
-    <Header/>
+    <Logon/>
   );
 }
 
