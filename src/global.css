@@ -7,9 +7,9 @@
    box-sizing: border-box;
 }
 
-body{
+body {
     font: 400 14px Roboto, sans-serif;
-    backgroud: #f0f0f5;
+    background:  #f0f0f5;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -21,8 +21,9 @@ button {
     cursor: pointer;
 }
 
+
 form input{
-   width: 100px;
+   width: 100%;
    height: 60px;
    color: #333;
    border: 1px solid #dcdce6;
