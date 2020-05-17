@@ -15,13 +15,13 @@ export default function Logon() {
                 <img src={cheersImg} alt="Logo" />
 
                 <form>
-                    <h1>Faça seu logon</h1>
+                    <h1>Login</h1>
 
                     <input placeholder="Sua ID" />
                     <button className="button" type="submit">Entrar</button>
 
-                    <Link to="/register">
-                        <FiLogIn size={16} color= "#e02041"/>
+                    <Link className="black-link" to="/register">
+                        <FiLogIn size={18} color= "#e02041"/>
                         Não tenho cadastro!
                         </Link>
                 </form>
