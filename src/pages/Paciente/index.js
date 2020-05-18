@@ -12,7 +12,7 @@ export default function Paciente() {
             <div className="content">
                 <section className="p" >
                     <img src={cheersImg} alt="Logo" />
-                    <h1>Paciente</h1>
+                    <h1>Cadastro de Paciente</h1>
                 </section >
                 <form className="form">
                     <input placeholder="Login:" />
@@ -25,7 +25,7 @@ export default function Paciente() {
                     <div className="input-group">
                         <input placeholder="Rua:" />
                         <input placeholder="Bairro:" />
-                        <input placeholder="Número:" style={{width:80}}/>
+                        <input placeholder="Num:" style={{width:100}}/>
                     </div>
                     <button className="button" type="submit">Cadastrar</button>
                     <button className="button" type="submit">Agendar Consulta</button>

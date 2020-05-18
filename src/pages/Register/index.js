@@ -25,7 +25,6 @@ export default function Register() {
                         Voltar para Logon
                         </Link>
                 </form>
-        
             </div>
         </div>
     );
