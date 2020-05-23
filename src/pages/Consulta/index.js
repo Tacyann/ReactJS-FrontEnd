@@ -13,7 +13,7 @@ export default function Medico() {
                     <h1>Consultar</h1>
                 </section >
                 <form className="form">
-
+                <input placeholder="Login:" />
                     <button className="button" type="submit">Consultar</button>
                 </form>
             </div>

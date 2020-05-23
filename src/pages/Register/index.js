@@ -4,9 +4,8 @@ import { FiArrowLeft } from 'react-icons/fi';
 
 import './styles.css';
 
-import userImg from '../../assets/AddUser.png';
 import cheersImg from '../../assets/saude2.png';
-import logoImg from "../../assets/Saude1.png";
+
 
 export default function Register() {
     return (

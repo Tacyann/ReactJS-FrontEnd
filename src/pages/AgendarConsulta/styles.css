@@ -1,4 +1,4 @@
-.medico-container{
+.agendarconsulta-container{
     width: 100%;
     max-width: 1120px;
     height: 100vh;
@@ -9,8 +9,7 @@
     justify-content: center;
 }
 
-
-.medico-container .content{
+.agendarconsulta-container .content{
     width: 100%;
     padding: 96px;
     background: #f0f0f5;
@@ -22,36 +21,36 @@
     align-items: center;
 }
     
-.medico-container .content section{
+.agendarconsulta-container .content section{
     width: 100%;
     max-width: 380px;
 }
 
-.medico-container .content section h1{
+.agendarconsulta-container .content section h1{
     margin: 64px 0 32px;
     font-size: 32px;
 }
 
-.medico-container .content section p {
+.agendarconsulta-container .content section p {
     font-size: 32px;
     color:#737380;
     line-height: 32px;
 }
 
-.medico-container .content form {
+.agendarconsulta-container .content form {
     width: 100%;
     max-width: 450px;
 }
 
-.medico-container .content form input{
+.agendarconsulta-container .content form input{
  margin-top: 8px;
 }
 
-.medico-container .content form .input-group{
+.paciente-container .content form .input-group{
     display: flex;
 }
 
-.medico-container .content form .input-group input +  input{
+.paciente-container .content form .input-group input +  input{
     margin-left: 8px;
 }
 

@@ -5,6 +5,7 @@ import Logon from './pages/Logon';
 import Register from './pages/Register';
 import Paciente from './pages/Paciente';
 import Medico from './pages/Medico';
+import AgendarConsulta from './pages/AgendarConsulta';
 
 
 export default function Routes(){
@@ -15,6 +16,7 @@ export default function Routes(){
         <Route path="/register" component={Register}/>
         <Route path="/paciente" component={Paciente}/>
         <Route path="/medico" component={Medico}/>
+        <Route path="/agendarconsulta" component={AgendarConsulta}/>
         </Switch>
         </BrowserRouter>
     );

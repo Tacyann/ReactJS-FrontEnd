@@ -11,10 +11,10 @@ import logoImg from "../../assets/Saude1.png";
 export default function Logon() {
     return (
         <div className="logon-container">
-            <section className="form">
+            <section>
                 <img src={cheersImg} alt="Logo" />
 
-                <form>
+                <form className="form">
                     <h1>Login</h1>
 
                     <input placeholder="Sua ID" />
@@ -26,7 +26,6 @@ export default function Logon() {
                         </Link>
                 </form>
             </section>
-            <img src={logoImg} alt="Cheers" />
         </div>
     );
 }
