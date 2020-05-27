@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiPower, FiTrash2 } from 'react-icons/fi';
+import { FiPower, FiTrash2 , FiEdit } from 'react-icons/fi';
 
 
 import './styles.css';
@@ -34,6 +34,7 @@ export default function ListarPaciente() {
                     <button type='button'>
                         <FiTrash2 size={20} color="#a8a8b3" />
                     </button>
+ 
                 </li>
 
                 <li>

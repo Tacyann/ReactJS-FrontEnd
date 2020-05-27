@@ -9,6 +9,10 @@ import AgendarConsulta from './pages/AgendarConsulta';
 import Consulta from './pages/Consulta';
 import ListarMedico from './pages/ListarMedico';
 import ListarPaciente from './pages/ListarPaciente';
+import Cobertura from './pages/Cobertura';
+import Especialidade from './pages/Especialidade';
+import ReceitaMedica from './pages/ReceitaMedica';
+import ReqExame from './pages/ReqExame';
 
 
 
@@ -20,7 +24,11 @@ export default function Routes(){
         <Route path="/register" component={Register}/>
         <Route path="/paciente" component={Paciente}/>
         <Route path="/medico" component={Medico}/>
+        <Route path="/cobertura" component={Cobertura}/>
+        <Route path="/especialidade" component={Especialidade}/>
         <Route path="/consultas/new" component={AgendarConsulta}/>
+        <Route path="/receita" component={ReceitaMedica}/>
+        <Route path="/requisicao" component={ReqExame}/>
         <Route path="/consulta" component={Consulta}/>
         <Route path="/listarmedico" component={ListarMedico}/>
         <Route path="/listarpaciente" component={ListarPaciente}/>

@@ -13,9 +13,9 @@ export default function AgendarConsulta() {
                 <section className="p" >
                     <img src={cheersImg} alt="Logo" />
                     <h1>Agendar Consulta</h1>
-                    <Link className="black-link" to="/">
+                    <Link className="black-link" to="/register">
                         <FiArrowLeft size={18} color="#e02041" />
-                        Voltar para Home.
+                        Voltar.
                         </Link>
                 </section >
                 <form className="form">

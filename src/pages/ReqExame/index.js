@@ -8,30 +8,22 @@ import './styles.css';
 import cheersImg from '../../assets/saude2.png';
 
 
-export default function Paciente() {
+export default function ReqExame() {
     return (
-        <div className="paciente-container">
+        <div className="requisicao-container">
             <div className="content">
                 <section className="p" >
                     <img src={cheersImg} alt="Logo" />
-                    <h1>Cadastro de Paciente</h1>
+                    <h1>Requisição de Exame</h1>
                     <Link className="black-link" to="/register">
                         <FiArrowLeft size={18} color="#e02041" />
                         Voltar.
                         </Link>
                 </section >
                 <form className="form">
-                    <input placeholder="Nome do Paciente" />
-                    <input type="date" placeholder="Data de Nascimento" />
-                    <input placeholder="Telefone" />
-                    <input placeholder="RG" />
-                    <input placeholder="CPF" />
+                    <input placeholder="Descrição da Requisição do Exame" />
+                    <input type="date" placeholder="Data da Requisição" />
 
-                    <div className="input-group">
-                        <input placeholder="Rua" />
-                        <input placeholder="Bairro" />
-                        <input placeholder="Num" style={{ width: 100 }} />
-                    </div>
                     <button className="button" type="submit">Cadastrar</button>
                     <Link className='button' to="/listarpaciente">Listar</Link>
                 </form>
