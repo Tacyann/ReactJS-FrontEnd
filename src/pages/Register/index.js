@@ -16,12 +16,12 @@ export default function Register() {
                 </section>
                 <form className="form">
                     <h1>Cadastro</h1>
-                    <button className="button" type="submit">Médico</button>
-                    <button className="button" type="submit">Paciente</button>
-
+                    <Link className='button' to="/medico">Médico</Link>
+                    <Link className='button' to="/paciente">Paciente</Link>
+                    <Link className='button' to="/consultas/new">Agendar Consulta</Link>
                     <Link className="black-link" to="/">
                         <FiArrowLeft size={18} color="#e02041" />
-                        Voltar para Logon
+                        Voltar para Home.
                         </Link>
                 </form>
             </div>

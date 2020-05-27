@@ -13,6 +13,10 @@ export default function AgendarConsulta() {
                 <section className="p" >
                     <img src={cheersImg} alt="Logo" />
                     <h1>Agendar Consulta</h1>
+                    <Link className="black-link" to="/">
+                        <FiArrowLeft size={18} color="#e02041" />
+                        Voltar para Home.
+                        </Link>
                 </section >
                 <form className="form">
                     <input placeholder="ID" />
@@ -22,20 +26,15 @@ export default function AgendarConsulta() {
                     </select>
                     <label className="label">Escolha uma data:</label>
                     <input type="date" />
-                    <label className="label" >Especialidade:</label>
+                    <label className="label">Especialidade:</label>
                     <select className="dropdown">
                     </select>
                     <label className="label">Médico:</label>
                     <select className="dropdown">
                     </select>
-                            <button className="button" type="submit">Confirmar Agendamento</button>
-                            <button className="button" type="submit">Listar</button>
-                            <button className="button" type="submit">Editar</button>
-                            <button className="button" type="submit">Excluir</button>
-                            <Link className="black-link" to="/">
-                                <FiArrowLeft size={18} color="#e02041" />
-                        Voltar
-                        </Link>
+                    <button className="button" type="submit">Cadastrar</button>
+                    <Link className='button' to="/consulta">Consulta</Link>
+
                 </form>
             </div>
         </div>

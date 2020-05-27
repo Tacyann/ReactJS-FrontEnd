@@ -9,6 +9,13 @@
     justify-content: center;
 }
 
+
+.agendarconsulta-container .content section p {
+    font-size: 32px;
+    color:#737380;
+    line-height: 32px;
+}
+
 .agendarconsulta-container .content{
     width: 100%;
     padding: 96px;
