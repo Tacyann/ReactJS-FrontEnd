@@ -1,4 +1,4 @@
-.formadepagamento-container{
+.pagamento-container{
     width: 100%;
     max-width: 1120px;
     height: 100vh;
@@ -10,7 +10,7 @@
 }
 
 
-.formadepagamento-container .content{
+.pagamento-container .content{
     width: 100%;
     padding: 96px;
     background: #f0f0f5;
@@ -22,36 +22,36 @@
     align-items: center;
 }
     
-.formadepagamento-container .content section{
+.pagamento-container .content section{
     width: 100%;
     max-width: 380px;
 }
 
-.formadepagamento-container .content section h1{
+.pagamento-container .content section h1{
     margin: 64px 0 32px;
     font-size: 32px;
 }
 
-.formadepagamento-container .content section p {
+.pagamento-container .content section p {
     font-size: 32px;
     color:#737380;
     line-height: 32px;
 }
 
-.formadepagamento-container .content form {
+.pagamento-container .content form {
     width: 100%;
     max-width: 450px;
 }
 
-.formadepagamento-container .content form input{
+.pagamento-container .content form input{
  margin-top: 8px;
 }
 
-.formadepagamento-container .content form .input-group{
+.pagamento-container .content form .input-group{
     display: flex;
 }
 
-.formadepagamento-container .content form .input-group input +  input{
+.pagamento-container .content form .input-group input +  input{
     margin-left: 8px;
 }
 

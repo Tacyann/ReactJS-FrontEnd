@@ -7,8 +7,12 @@ import './styles.css';
 
 import cheersImg from '../../assets/saude2.png';
 import logoImg from "../../assets/Saude1.png";
+import api from '../../services/api';
 
 export default function Logon() {
+    function handleLogon(){
+    
+    }
     return (
         <div className="logon-container">
             <section>

@@ -23,6 +23,8 @@ export default function Register() {
                     <Link className='button' to="/consultas/new">Agendar Consulta</Link>
                     <Link className='button' to="/receita">Receita Medica</Link>
                     <Link className='button' to="/requisicao">Requisição de Exame</Link>
+                    <Link className='button' to="/formaspagamento">Formas De Pagamento</Link>
+                    <Link className='button' to="/pagamento">Pagamento</Link>
                     <Link className="black-link" to="/">
                         <FiArrowLeft size={18} color="#e02041" />
                         Voltar para Home.

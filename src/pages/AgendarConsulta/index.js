@@ -21,9 +21,12 @@ export default function AgendarConsulta() {
                 <form className="form">
                     <input placeholder="ID" />
                     <input placeholder="Paciente" />
-                    <label className="label" >Cobertura:</label>
-                    <select className="dropdown">
-                    </select>
+                    <div className="input-group">
+                    <input  type="radio"/>
+                    <label className="label">Cobertura</label>
+                    <input type="radio" />
+                    <label className="label">Particular</label>
+                    </div>
                     <label className="label">Escolha uma data:</label>
                     <input type="date" />
                     <label className="label">Especialidade:</label>
@@ -34,6 +37,7 @@ export default function AgendarConsulta() {
                     </select>
                     <button className="button" type="submit">Cadastrar</button>
                     <Link className='button' to="/consulta">Consulta</Link>
+                    <Link className='button' to="/register">Cancelar</Link>
 
                 </form>
             </div>

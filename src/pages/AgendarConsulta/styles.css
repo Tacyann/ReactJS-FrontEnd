@@ -53,11 +53,15 @@
  margin-top: 8px;
 }
 
-.paciente-container .content form .input-group{
-    display: flex;
+.agendarconsulta-container .content form .input-group{
+    display: flex; 
+    width: 35%;
+
 }
 
-.paciente-container .content form .input-group input +  input{
+.agendarconsulta-container .content form .input-group input +  input{
     margin-left: 8px;
+    
 }
+
 

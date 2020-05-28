@@ -24,7 +24,8 @@ export default function Consulta() {
                 <strong>CONSULTA</strong>
                     <br/>
                     <strong>Cobertura:</strong>
-                    <select className="dropdown" />
+                    <input type="radio" />
+                    
 
                     <strong>Escolha uma data:</strong>
                     <label className="label" />

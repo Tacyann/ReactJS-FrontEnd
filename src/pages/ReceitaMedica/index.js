@@ -21,11 +21,12 @@ export default function ReceitaMedica() {
                         </Link>
                 </section >
                 <form className="form">
-                    <input placeholder="Descrição da Receita" />
+                    <textarea placeholder="Descrição da Receita" />
                     <input type="date" placeholder="Data da Receita" />
 
                     <button className="button" type="submit">Cadastrar</button>
                     <Link className='button' to="/listarpaciente">Listar</Link>
+                    <Link className='button' to="/register">Cancelar</Link>
                 </form>
             </div>
         </div>

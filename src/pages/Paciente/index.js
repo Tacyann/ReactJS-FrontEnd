@@ -34,6 +34,8 @@ export default function Paciente() {
                     </div>
                     <button className="button" type="submit">Cadastrar</button>
                     <Link className='button' to="/listarpaciente">Listar</Link>
+                    <Link className='button' to="/register">Cancelar</Link>
+                    
                 </form>
             </div>
         </div>

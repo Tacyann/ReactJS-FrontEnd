@@ -21,11 +21,12 @@ export default function ReqExame() {
                         </Link>
                 </section >
                 <form className="form">
-                    <input placeholder="Descrição da Requisição do Exame" />
+                    <textarea placeholder="Descrição" />
                     <input type="date" placeholder="Data da Requisição" />
 
                     <button className="button" type="submit">Cadastrar</button>
                     <Link className='button' to="/listarpaciente">Listar</Link>
+                    <Link className='button' to="/register">Cancelar</Link>
                 </form>
             </div>
         </div>

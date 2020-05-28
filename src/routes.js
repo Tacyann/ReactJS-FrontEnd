@@ -13,6 +13,8 @@ import Cobertura from './pages/Cobertura';
 import Especialidade from './pages/Especialidade';
 import ReceitaMedica from './pages/ReceitaMedica';
 import ReqExame from './pages/ReqExame';
+import FormasDePagamento from './pages/FormasDePagamento';
+import Pagamento from './pages/Pagamento';
 
 
 
@@ -32,6 +34,9 @@ export default function Routes(){
         <Route path="/consulta" component={Consulta}/>
         <Route path="/listarmedico" component={ListarMedico}/>
         <Route path="/listarpaciente" component={ListarPaciente}/>
+        <Route path="/formaspagamento" component={FormasDePagamento}/>
+        <Route path="/pagamento" component={Pagamento}/>
+       
         </Switch>
         </BrowserRouter>
     );
