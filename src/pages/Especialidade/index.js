@@ -47,7 +47,7 @@ export default function Especialidade() {
                     />
 
                     <button className="button" type="submit">Cadastrar</button>
-                    <Link className='button' to="/listarmedico">Listar</Link>
+                    <Link className='button' to="/listarespecialidade">Listar</Link>
                     <Link className='button' to="/register">Cancelar</Link>
                 </form>
             </div>

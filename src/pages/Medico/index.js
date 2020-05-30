@@ -27,7 +27,7 @@ export default function Medico() {
                     <select className="dropdown">
 
                     </select>
-
+                    <Link className='button' to="/listarmedico">Listar</Link>
                     <button className="button" type="submit">Cadastrar</button>
                     <Link className='button' to="/listarmedico">Listar</Link>
                     <Link className='button' to="/register">Cancelar</Link>

@@ -3,6 +3,7 @@ import {BrowserRouter,Route, Switch} from 'react-router-dom';
 
 import Logon from './pages/Logon';
 import Register from './pages/Register';
+import Profile from './pages/Profile';
 import Paciente from './pages/Paciente';
 import Medico from './pages/Medico';
 import AgendarConsulta from './pages/AgendarConsulta';
@@ -15,6 +16,7 @@ import ReceitaMedica from './pages/ReceitaMedica';
 import ReqExame from './pages/ReqExame';
 import FormasDePagamento from './pages/FormasDePagamento';
 import Pagamento from './pages/Pagamento';
+import ListarEspecialidade from './pages/ListarEspecialidade';
 
 
 
@@ -24,10 +26,12 @@ export default function Routes(){
         <Switch>
         <Route path="/" exact component={Logon}/>
         <Route path="/register" component={Register}/>
+        <Route path="/profile" component={Profile}/>
         <Route path="/paciente" component={Paciente}/>
         <Route path="/medico" component={Medico}/>
         <Route path="/cobertura" component={Cobertura}/>
         <Route path="/especialidade" component={Especialidade}/>
+        <Route path="/listarespecialidade" component={ListarEspecialidade}/>
         <Route path="/consultas/new" component={AgendarConsulta}/>
         <Route path="/receita" component={ReceitaMedica}/>
         <Route path="/requisicao" component={ReqExame}/>
