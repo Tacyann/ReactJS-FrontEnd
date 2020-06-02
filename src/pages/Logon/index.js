@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import {FiLogIn} from 'react-icons/fi';
 
@@ -7,12 +7,13 @@ import './styles.css';
 
 import cheersImg from '../../assets/saude2.png';
 import logoImg from "../../assets/Saude1.png";
+
 import api from '../../services/api';
 
+import './styles.css';
+
 export default function Logon() {
-    function handleLogon(){
-    
-    }
+
     return (
         <div className="logon-container">
             <section>
