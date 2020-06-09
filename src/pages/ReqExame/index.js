@@ -1,7 +1,8 @@
-import React from 'react';
+import React  from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
+//import api from '../../services/api';
 import './styles.css';
 
 
@@ -9,6 +10,9 @@ import cheersImg from '../../assets/saude2.png';
 
 
 export default function ReqExame() {
+
+    //const[descReqExame, setDescReqExame] = useState('');
+    //const[dataReqExame, setDataReqExame] = useState('');
     return (
         <div className="requisicao-container">
             <div className="content">

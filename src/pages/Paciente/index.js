@@ -1,5 +1,5 @@
 import React , { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
 
@@ -9,36 +9,37 @@ import './styles.css';
 
 import cheersImg from '../../assets/saude2.png';
 
-
 export default function Paciente() {
 
     const [nomePaciente, setNomepaciente] = useState('');
-    const [data, setData] = useState('');
-    const [telefone, setTelefone] = useState('');
-    const [RG, setRG] = useState('');
-    const [CPF, setCPF] = useState('');
-    const [rua, setRua] = useState('');
-    const [bairro, setBairro] = useState('');
-    const [num, setNum] = useState('');
+    const [datNascimento, setdatNascimento] = useState('');
+    const [telPaciente, setTelefone] = useState('');
+    const [RGPaciente, setRGPaciente] = useState('');
+    const [CPFPaciente, setCPFPaciente] = useState('');
+    const [ruaPaciente, setruaPaciente] = useState('');
+    const [bairro, setbairro] = useState('');
+    const [numPaciente, setnumPaciente] = useState('');
 
+    const history = useHistory();
 
     async function handlePaciente(e) {
         e.preventDefault();
 
         const data = {
             nomePaciente,
-            data,
-            telefone,
-            RG,
-            CPF,
-            rua,
+            datNascimento,
+            telPaciente,
+            RGPaciente,
+            CPFPaciente,
+            ruaPaciente,
             bairro,
-            num,
+            numPaciente,
 
         };
         try {
             const response = await api.post('paciente', data);
-            alert(`O ID Paciente: ${response.data.idPaciente}`);
+            alert(`Seu  ID de acesso: ${response.data.idPaciente}`);
+            history.push('/');
         } catch (err) {
             alert('Erro no cadastro, tente novamente.');
         }
@@ -61,34 +62,33 @@ export default function Paciente() {
                     onChange={e => setNomepaciente(e.target.value)}
                     />
                     <input type="date" placeholder="Data de Nascimento:" 
-                    value={data}
-                    onChange={e => setData(e.target.value)}
+                    value={datNascimento}
+                    onChange={e => setdatNascimento(e.target.value)}
                     />
                     <input placeholder="Telefone"
-                    value={telefone}
+                    value={telPaciente}
                     onChange={e => setTelefone(e.target.value)}
                     />
                     <input placeholder="RG"
-                    value={RG}
-                    onChange={e => setRG(e.target.value)}
+                    value={RGPaciente}
+                    onChange={e => setRGPaciente(e.target.value)}
                     />
                     <input placeholder="CPF"
-                    value={CPF}
-                    onChange={e => setCPF(e.target.value)}
+                    value={CPFPaciente}
+                    onChange={e => setCPFPaciente(e.target.value)}
                     />
-
                     <div className="input-group">
                         <input placeholder="Rua"
-                        value={rua}
-                        onChange={e => setRua(e.target.value)}
+                        value={ruaPaciente}
+                        onChange={e => setruaPaciente(e.target.value)}
                         />
                         <input placeholder="Bairro" 
                         value={bairro}
-                        onChange={e => setBairro(e.target.value)}
+                        onChange={e => setbairro(e.target.value)}
                         />
                         <input placeholder="Num" style={{ width: 100 }}
-                        value={num}
-                        onChange={e => setNum(e.target.value)}
+                        value={numPaciente}
+                        onChange={e => setnumPaciente(e.target.value)}
                         />
                     </div>
                     <button className="button" type="submit">Cadastrar</button>

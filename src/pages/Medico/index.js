@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Select from 'react-select';
+//import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
-import { descEspecialidade } from '../Especialidade';
+//import {descEspecialidade } from '../../pages/Especialidade';
 
 import api from '../../services/api';
 
@@ -15,14 +15,22 @@ export default function Medico() {
     const [nomeMedico, setNomemedico] = useState('');
     const [CRM, setCRM] = useState('');
     const [descEspecialidade, setDescspecialidade] = useState('');
-
-    const options = [
-        { value: 'Ortopedia', label: 'Ortopedia' },
-        { value: 'Geriatria', label: 'Geriatria' },
-        { value: 'Cardiologia', label: 'Cardiologia' }
-    ]
-
-
+/*
+    async function consultaEspecialidade() {
+        const response = await api.get('especialidade');
+        console.log(response);
+        
+        if (response.data) {
+            response.data.map(especialidade => {
+                return {
+                    value: especialidade.descEspecialidade,
+                    label: especialidade.descEspecialidade,
+                }
+            })
+        }
+        return [];
+    }
+}*/
     async function handleMedico(e) {
         e.preventDefault();
 
@@ -38,7 +46,6 @@ export default function Medico() {
             alert('Erro no cadastro, tente novamente.');
         }
     }
-
 
     return (
         <div className="medico-container">
@@ -62,9 +69,11 @@ export default function Medico() {
                         onChange={e => setCRM(e.target.value)}
                     />
 
-                    <label className="label" >Especialidade:</label>
-                    <Select options={options} />
-
+                    <input placeholder="Especialidade"
+                    value={descEspecialidade}
+                    onChange={e => setDescspecialidade(e.target.value)}
+                    />
+            
                     <button className="button" type="submit">Cadastrar</button>
                     <Link className='button' to="/listarmedico">Listar</Link>
                 </form>
