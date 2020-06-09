@@ -17,6 +17,8 @@ import ReqExame from './pages/ReqExame';
 import FormasDePagamento from './pages/FormasDePagamento';
 import Pagamento from './pages/Pagamento';
 import ListarEspecialidade from './pages/ListarEspecialidade';
+import ListarCobertura from './pages/ListarCobertura';
+import ListarExame from './pages/ListarExame';
 
 
 
@@ -24,6 +26,7 @@ export default function Routes(){
     return(
         <BrowserRouter>
         <Switch>
+        <Route path="/" exact component={LogonPaciente}/>
         <Route path="/logopaci" exact component={LogonPaciente}/>
         <Route path="/register" component={Register}/>
         <Route path="/profile" component={Profile}/>
@@ -32,6 +35,8 @@ export default function Routes(){
         <Route path="/cobertura" component={Cobertura}/>
         <Route path="/especialidade" component={Especialidade}/>
         <Route path="/listarespecialidade" component={ListarEspecialidade}/>
+        <Route path="/listarcobertura" component={ListarCobertura}/>
+        <Route path="/listarexame" component={ListarExame}/>
         <Route path="/consultas/new" component={AgendarConsulta}/>
         <Route path="/receita" component={ReceitaMedica}/>
         <Route path="/requisicao" component={ReqExame}/>

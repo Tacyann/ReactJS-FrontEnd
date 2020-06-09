@@ -1,8 +1,8 @@
-import React , {useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiPower, FiTrash2 } from 'react-icons/fi';
-import { FcEditImage, FcCellPhone, FcCalendar , FcHome, FcBusinessman} from 'react-icons/fc';
-import { TiDocument ,TiSortNumerically , TiClipboard} from "react-icons/ti";
+//import { FcEditImage, FcCellPhone, FcCalendar, FcHome, FcBusinessman } from 'react-icons/fc';
+//import { TiDocument, TiSortNumerically, TiClipboard } from "react-icons/ti";
 
 import api from '../../services/api';
 
@@ -11,20 +11,34 @@ import './styles.css';
 import cheersImg from '../../assets/saude2.png';
 
 export default function ListarPaciente() {
-    const [consultas, setConsultas] = useState([]);
+    const [paciente, setPaciente] = useState([]);
 
     const idPaciente = localStorage.getItem('idPaciente');
     const nomePaciente = localStorage.getItem('nomePaciente');
 
-    useEffect(()=>{
-        api.get('profilepaci',{
-            headers:{
-                Authorization:idPaciente,
+    useEffect(() => {
+        api.get('paciente', {
+            headers: {
+                Authorization: idPaciente,
             }
         }).then(Response => {
-            setConsultas(Response.data);
+            setPaciente(Response.data);
         })
-    },[idPaciente]);
+    }, [idPaciente]);
+
+    async function handleDeletePaciente(id){
+        try{
+            await api.delete(`paciente/${id}`,{
+                headers: {
+                    Authorization: idPaciente,
+                }  
+            });
+
+            setPaciente(paciente.filter(paciente => paciente.id !== id))
+        }catch (err){
+            alert('Erro ao deletar paciente, tente novamente.');
+        }
+    }
 
     return (
         <div className="listarpaciente-container">
@@ -36,24 +50,39 @@ export default function ListarPaciente() {
                     <FiPower size={18} color="#602041" />
                 </button>
             </header>
-            <h1>Pacientes</h1>
+            <h1>Pacientes Cadastrados</h1>
             <ul>
-            {consultas.map(consulta =>(
-                          <li key={consulta.idConsulta}>
-                    
-                          <p>{consulta.dataConsulta}</p> 
-                          
-                          <p>{consulta.medico_id}</p> 
-                       
-                          <p>{consulta.paciente_id}</p> 
-                    
-                          <button type='button'>
-                              <FcEditImage size={20} />
-                              <FiTrash2 size={20} color="#a8a8b3" />
-                          </button>
-      
-                      </li>
-            ))}
+                {paciente.map(paciente => (
+                    <li key={paciente.idPaciente}>
+                        <strong>Nome do Paciente:</strong>
+                        <p>{paciente.nomePaciente}</p>
+
+                        <strong>Data de Nascimento:</strong>
+                        <p>{paciente.datNascimento}</p>
+
+                        <strong>Telefone:</strong>
+                        <p>{paciente.telPaciente}</p>
+
+                        <strong>RG:</strong>
+                        <p>{paciente.RGPaciente}</p>
+
+                        <strong>CPF:</strong>
+                        <p>{paciente.CPFPaciente}</p>
+
+                        <strong>Rua:</strong>
+                        <p>{paciente.ruaPaciente}</p>
+
+                        <strong>Bairro:</strong>
+                        <p>{paciente.bairro}</p>
+
+                        <strong>Número:</strong>
+                        <p>{paciente.numPaciente}</p>
+
+                        <button onClick={()=>handleDeletePaciente(paciente.idPaciente)} type='button'>
+                            <FiTrash2 size={20} color="#a8a8b3" />
+                        </button>
+                    </li>
+                ))}
             </ul>
         </div >
     );

@@ -7,7 +7,7 @@ import './styles.css';
 
 import cheersImg from '../../assets/saude2.png';
 
-export default function Cobertura() {
+export default function Exame() {
 
     const[descCobertura, setdescCobertura] = useState('');
 

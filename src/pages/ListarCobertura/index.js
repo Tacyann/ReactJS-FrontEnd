@@ -7,38 +7,38 @@ import './styles.css';
 
 import cheersImg from '../../assets/saude2.png';
 
-export default function ListarEspecialidade() {
+export default function ListarCobertura() {
 
-    const [especialidade, setEspecialidade] = useState([]);
+    const [cobertura, setCobertura] = useState([]);
 
     const history = useHistory();
 
-    const idEspecialidade = localStorage.getItem('idEspecialidade');
-    const descEspecialidade = localStorage.getItem('descEspecialidade');
+    const idCobertura = localStorage.getItem('idCobertura');
+    const descCobertura = localStorage.getItem('descCobertura');
 
     
 
     useEffect(() => {
-        api.get('especialidade', {
+        api.get('cobertura', {
             headers: {
-                Authorization: idEspecialidade,
+                Authorization: idCobertura,
             }
         }).then(Response => {
-            setEspecialidade(Response.data);
+            setCobertura(Response.data);
         })
-    }, [idEspecialidade]);
+    }, [idCobertura]);
 
-    async function handleDeleteEspecialidade(id){
+    async function handleDeleteCobertura(id){
         try{
-            await api.delete(`especialidade/${id}`,{
+            await api.delete(`cobertura/${id}`,{
                 headers: {
-                    Authorization: idEspecialidade,
+                    Authorization: idCobertura,
                 }  
             });
 
-            setEspecialidade(especialidade.filter(especialidade => especialidade.id !== id));
+            setCobertura(cobertura.filter(cobertura => cobertura.id !== id));
         }catch (err){
-            alert('Erro ao deletar especialidade, tente novamente.');
+            alert('Erro ao deletar cobertura, tente novamente.');
         }
     }
 
@@ -48,24 +48,24 @@ export default function ListarEspecialidade() {
     }
 
     return (
-        <div className="listarespecialidade-container">
+        <div className="listarcobertura-container">
             <header>
                 <img src={cheersImg} alt="Logo" />
                 <span>Bem vindo, à Cheers</span>
-                <Link className='button' to="/especialidade">Cadastrar Especialidade</Link>
+                <Link className='button' to="/cobertura">Cadastrar Cobertura</Link>
                 <button type='button'>
                     <FiPower onClick={handleLogout} size={18} color="#602041" />
                 </button>
             </header>
-            <h1>Especialidades Cadastradas</h1>
+            <h1>Coberturas Cadastradas</h1>
             <ul>
-                {especialidade.map(especialidade => (
-                     <li key={especialidade.idEspecialidade}>
+                {cobertura.map(cobertura => (
+                     <li key={cobertura.idCobertura}>
                      
                      <strong>Descrição Especialidade:</strong>
-                     <p>{especialidade.descEspecialidade}</p>
+                     <p>{cobertura.descCobertura}</p>
   
-                     <button onClick={()=>handleDeleteEspecialidade(especialidade.idEspecialidade)} type='button'>
+                     <button onClick={()=>handleDeleteCobertura(cobertura.idCobertura)} type='button'>
                          <FiTrash2 size={20} color="#a8a8b3" />
                      </button>
                  </li>

@@ -2,7 +2,7 @@ import React  from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
-//import api from '../../services/api';
+import api from '../../services/api';
 import './styles.css';
 
 
@@ -11,8 +11,26 @@ import cheersImg from '../../assets/saude2.png';
 
 export default function ReqExame() {
 
-    //const[descReqExame, setDescReqExame] = useState('');
-    //const[dataReqExame, setDataReqExame] = useState('');
+    //const[descEspecialidade, setDescespecialidade] = useState('');
+
+   /* async function handleExame(e) {
+        e.preventDefault();
+
+        const data = {
+            descReqExame,
+            dataReqExame,
+            consulta_id
+        };
+
+        try{
+            const response = await api.post('especialidade', data);
+
+            alert(`O ID da sua especialidade: ${response.data.idEspecialidade}`);
+        } catch(err) {
+            alert('Erro no cadastro, tente novamente.');
+        }      
+    }*/
+
     return (
         <div className="requisicao-container">
             <div className="content">
@@ -29,7 +47,7 @@ export default function ReqExame() {
                     <input type="date" placeholder="Data da Requisição" />
 
                     <button className="button" type="submit">Cadastrar</button>
-                    <Link className='button' to="/listarpaciente">Listar</Link>
+                    <Link className='button' to="/listarexame">Listar</Link>
                     <Link className='button' to="/register">Cancelar</Link>
                 </form>
             </div>
