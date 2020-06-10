@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-//import Select from 'react-select';
+import React, { useState, useEffect } from 'react';
+import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
-//import {descEspecialidade } from '../../pages/Especialidade';
 
 import api from '../../services/api';
 
@@ -14,30 +13,33 @@ export default function Medico() {
 
     const [nomeMedico, setNomemedico] = useState('');
     const [CRM, setCRM] = useState('');
-    const [descEspecialidade, setDescspecialidade] = useState('');
-/*
+    const [especialidade_id, setEspecialidadeID] = useState(null);
+    const [especialidades, setEspecialidades] = useState([]);
+
     async function consultaEspecialidade() {
         const response = await api.get('especialidade');
-        console.log(response);
-        
         if (response.data) {
-            response.data.map(especialidade => {
+            return response.data.map(especialidade => {
                 return {
-                    value: especialidade.descEspecialidade,
+                    value: especialidade.idEspecialidade,
                     label: especialidade.descEspecialidade,
                 }
-            })
+            });
         }
         return [];
     }
-}*/
+
+    useEffect(async () => {
+        setEspecialidades(await consultaEspecialidade())
+    }, [])
+    
     async function handleMedico(e) {
         e.preventDefault();
 
         const data = {
             nomeMedico,
             CRM,
-            descEspecialidade,
+            especialidade_id,
         };
         try {
             const response = await api.post('medico', data);
@@ -69,11 +71,10 @@ export default function Medico() {
                         onChange={e => setCRM(e.target.value)}
                     />
 
-                    <input placeholder="Especialidade"
-                    value={descEspecialidade}
-                    onChange={e => setDescspecialidade(e.target.value)}
-                    />
-            
+                    <Select 
+                        options={especialidades}
+                        onChange={e => setEspecialidadeID(e.value)}/>
+
                     <button className="button" type="submit">Cadastrar</button>
                     <Link className='button' to="/especialidade">Cadastrar Especialidade</Link>
                     <Link className='button' to="/listarmedico">Listar</Link>
