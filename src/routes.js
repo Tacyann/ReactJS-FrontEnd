@@ -19,6 +19,7 @@ import Pagamento from './pages/Pagamento';
 import ListarEspecialidade from './pages/ListarEspecialidade';
 import ListarCobertura from './pages/ListarCobertura';
 import ListarExame from './pages/ListarExame';
+import ListarReceita from './pages/ListarReceita';
 
 
 
@@ -37,6 +38,7 @@ export default function Routes(){
         <Route path="/listarespecialidade" component={ListarEspecialidade}/>
         <Route path="/listarcobertura" component={ListarCobertura}/>
         <Route path="/listarexame" component={ListarExame}/>
+        <Route path="/listarreceita" component={ListarReceita}/>
         <Route path="/consultas/new" component={AgendarConsulta}/>
         <Route path="/receita" component={ReceitaMedica}/>
         <Route path="/requisicao" component={ReqExame}/>

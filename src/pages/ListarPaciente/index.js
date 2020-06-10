@@ -26,14 +26,14 @@ export default function ListarPaciente() {
         })
     }, [idPaciente]);
 
-    async function handleDeletePaciente(id){
+    async function handleDeletePaciente(idPaciente){
         try{
-            await api.delete(`paciente/${id}`,{
+            await api.delete(`paciente/${idPaciente}`,{
                 headers: {
                     Authorization: idPaciente,
                 }  
             });
-            setPaciente(paciente.filter(pacientes => paciente.id !== id))
+            setPaciente(paciente.filter(pacientes => paciente.idPaciente !== idPaciente))
         }catch (err){
             alert('Erro ao deletar paciente, tente novamente.');
         }

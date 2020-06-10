@@ -1,34 +1,58 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import Select from 'react-select';
-import { Form, Radio } from 'semantic-ui-react'
 
+import api from '../../services/api';
 import './styles.css';
 
 
 import cheersImg from '../../assets/saude2.png';
+import { Radio } from 'semantic-ui-react';
 
 export default function AgendarConsulta() {
 
-    const options = [
-        { value: ' ', label: ' ' },
-        { value: '1', label: '1' },
-        { value: '2', label: '2' },
-        { value: '3', label: '3' }
-    ]
+    const [consulta, setConsulta] = useState('');
+    const [dataConsulta, setdataConsulta] = useState('');
 
-    const MyComponent = () => (
-        <Select options={options} />
-    )
+    const [especialidade_id, setEspecialidadeID] = useState(null);
+    const [especialidades, setEspecialidades] = useState([]);
+    const [medico_id, setMedicoID] = useState(null);
+    const [medicos, setMedicos] = useState([]);
+    const [paciente_id, setPacienteID] = useState(null);
+    const [pacientes, setPacientes] = useState([]);
 
+    async function consultaEspecialidade() {
+        const response = await api.get('especialidade');
+        if (response.data) {
+            return response.data.map(especialidade => {
+                return {
+                    value: especialidade.idEspecialidade,
+                    label: especialidade.descEspecialidade,
+                }
+            });
+        }
+        return [];
+    }
 
-    async function handleOptionChange(changeEvent) {
-        //e.preventDefault();
-        this.setState({
-            selectedOption: changeEvent.target.value
-        });
+    useEffect(async () => {
+        setEspecialidades(await consultaEspecialidade())
+    }, [])
 
+    async function handleAgendarConsulta(e) {
+        e.preventDefault();
+
+        const data = {
+            dataConsulta,
+            medico_id,
+            paciente_id,
+        };
+        try {
+            const response = await api.post('consulta', data);
+            alert(`O ID Agendamento: ${response.data.idConulta}`);
+        } catch (err) {
+            alert('Erro no agendamento, tente novamente.');
+        }
     }
 
     return (
@@ -43,20 +67,24 @@ export default function AgendarConsulta() {
                         </Link>
                 </section >
                 <form className="form">
-                    <input placeholder="Nome do Paciente" />
+                    <input placeholder="Nome do Paciente"
+                        value={pacientes.nomePaciente}
+                        onChange={e => setPacientes(e.target.value)}
+                    />
                     <label className="label">Escolha uma data:</label>
-                    <input type="date" />
-                    <input placeholder="Escolha à Especialidade" />
-                    <input placeholder="Informe o nome do Médico" />
-                    <label className="label">Cobertura</label>
-                    <input type="checkbox"/>
-                    <input placeholder="Informe a cobertura" />
-                    <label className="label">Particular</label>
-                    <input type="checkbox" height="30" width="30"/>
-                    <input placeholder="Valor" />
-                    <Select options={options}>Quantidade</Select>
-                    <label className="label">Data do Pagamento:</label>
-                    <input type="date" />
+                    <input type="date" placeholder="Data da Consulta:"
+                        value={dataConsulta}
+                        onChange={e => setdataConsulta(e.target.value)}
+                    />
+                    <Select
+                        options={especialidades}
+                        onChange={e => setEspecialidadeID(e.value)} />
+                    <input placeholder="Nome do Médico"
+                        value={medicos.nomeMedico}
+                        onChange={e => setPacientes(e.target.value)}
+                    />
+                    <Radio /> Cobertura 
+                    <Radio /> Particular 
                     <button className="button" type="submit">Cadastrar</button>
                     <Link className='button' to="/consulta">Listar</Link>
                     <Link className='button' to="/register">Cancelar</Link>

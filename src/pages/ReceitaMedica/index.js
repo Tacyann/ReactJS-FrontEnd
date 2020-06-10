@@ -25,7 +25,7 @@ export default function ReceitaMedica() {
                     <input type="date" placeholder="Data da Receita" />
 
                     <button className="button" type="submit">Cadastrar</button>
-                    <Link className='button' to="/listarpaciente">Listar</Link>
+                    <Link className='button' to="/listarreceita">Listar</Link>
                     <Link className='button' to="/register">Cancelar</Link>
                 </form>
             </div>
