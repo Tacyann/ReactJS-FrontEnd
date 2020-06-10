@@ -1,4 +1,4 @@
-import React  from 'react';
+import React, { useState }  from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
@@ -8,28 +8,27 @@ import './styles.css';
 
 import cheersImg from '../../assets/saude2.png';
 
-
 export default function ReqExame() {
 
-    //const[descEspecialidade, setDescespecialidade] = useState('');
+    const [descReqExame, setdescReqExame] = useState('');
+    const [dataReqExame, setdataReqExame] = useState('');
 
-   /* async function handleExame(e) {
+    async function handleReqExame(e) {
         e.preventDefault();
 
         const data = {
             descReqExame,
             dataReqExame,
-            consulta_id
         };
 
         try{
-            const response = await api.post('especialidade', data);
+            const response = await api.post('exame', data);
 
-            alert(`O ID da sua especialidade: ${response.data.idEspecialidade}`);
+            alert(`O ID do exame: ${response.data.idReqExame}`);
         } catch(err) {
             alert('Erro no cadastro, tente novamente.');
         }      
-    }*/
+    }
 
     return (
         <div className="requisicao-container">
@@ -42,9 +41,15 @@ export default function ReqExame() {
                         Voltar.
                         </Link>
                 </section >
-                <form className="form">
-                    <textarea placeholder="Descrição" />
-                    <input type="date" placeholder="Data da Requisição" />
+                <form onSubmit={handleReqExame}>
+                    <textarea placeholder="Descrição"
+                    value={descReqExame}
+                    onChange={e => setdescReqExame(e.target.value)}
+                    />
+                    <input type="date" placeholder="Data da Requisição" 
+                    value={dataReqExame}
+                    onChange={e => setdataReqExame(e.target.value)}
+                    />
 
                     <button className="button" type="submit">Cadastrar</button>
                     <Link className='button' to="/listarexame">Listar</Link>

@@ -8,7 +8,8 @@ import './styles.css';
 
 
 import cheersImg from '../../assets/saude2.png';
-import { Radio } from 'semantic-ui-react';
+import { Radio, Label } from 'semantic-ui-react';
+import Cobertura from '../Cobertura';
 
 export default function AgendarConsulta() {
 
@@ -21,6 +22,10 @@ export default function AgendarConsulta() {
     const [medicos, setMedicos] = useState([]);
     const [paciente_id, setPacienteID] = useState(null);
     const [pacientes, setPacientes] = useState([]);
+    const [idCobertura, setCoberturaID] = useState(null);
+    const [coberturas, setCoberturas] = useState([]);
+    const [idFomasPagamento, setFormasID] = useState(null);
+    const [formas, setFormas] = useState([]);
 
     async function consultaEspecialidade() {
         const response = await api.get('especialidade');
@@ -35,8 +40,59 @@ export default function AgendarConsulta() {
         return [];
     }
 
+    async function consultaMedico() {
+        const response = await api.get('medico');
+        if (response.data) {
+            return response.data.map(medico => {
+                return {
+                    value: medico.idMedico,
+                    label: medico.nomeMedico,
+                }
+            });
+        }
+        return [];
+    }
+
+    async function consultaCobertura() {
+        const response = await api.get('cobertura');
+        if (response.data) {
+            return response.data.map(cobertura => {
+                return {
+                    value: cobertura.idCobertura,
+                    label: cobertura.descCobertura,
+                }
+            });
+        }
+        return [];
+    }
+
+    async function consultaForma() {
+        const response = await api.get('formas');
+        if (response.data) {
+            return response.data.map(formas => {
+                return {
+                    value: formas.idFomasPagamento,
+                    label: formas.descFormasPagamento,
+                }
+            });
+        }
+        return [];
+    }
+
     useEffect(async () => {
         setEspecialidades(await consultaEspecialidade())
+    }, [])
+
+    useEffect(async () => {
+        setMedicos(await consultaMedico())
+    }, [])
+
+    useEffect(async () => {
+        setCoberturas(await consultaCobertura())
+    }, [])
+
+    useEffect(async () => {
+        setFormas(await consultaForma())
     }, [])
 
     async function handleAgendarConsulta(e) {
@@ -76,15 +132,23 @@ export default function AgendarConsulta() {
                         value={dataConsulta}
                         onChange={e => setdataConsulta(e.target.value)}
                     />
+                    <label/> Informe a Especialidade:
                     <Select
                         options={especialidades}
                         onChange={e => setEspecialidadeID(e.value)} />
-                    <input placeholder="Nome do Médico"
-                        value={medicos.nomeMedico}
-                        onChange={e => setPacientes(e.target.value)}
-                    />
-                    <Radio /> Cobertura 
-                    <Radio /> Particular 
+                    <label/> Selecione o Médico:
+                    <Select
+                        options={medicos}
+                        onChange={e => setMedicoID(e.value)} />
+                    <label/> Cobertura: 
+                    <Select
+                        options={coberturas}
+                        onChange={e => setMedicoID(e.value)} />
+                    <label/> Escolha a Forma de Pagamento:
+                        <Select
+                        options={formas}
+                        onChange={e => setMedicoID(e.value)} />
+     
                     <button className="button" type="submit">Cadastrar</button>
                     <Link className='button' to="/consulta">Listar</Link>
                     <Link className='button' to="/register">Cancelar</Link>
