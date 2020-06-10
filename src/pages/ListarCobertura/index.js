@@ -35,8 +35,7 @@ export default function ListarCobertura() {
                     Authorization: idCobertura,
                 }  
             });
-
-            setCobertura(cobertura.filter(cobertura => cobertura.id !== id));
+            setCobertura(cobertura.filter(cobertura => cobertura.id!==id));
         }catch (err){
             alert('Erro ao deletar cobertura, tente novamente.');
         }

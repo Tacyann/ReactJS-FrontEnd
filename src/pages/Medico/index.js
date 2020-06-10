@@ -75,6 +75,7 @@ export default function Medico() {
                     />
             
                     <button className="button" type="submit">Cadastrar</button>
+                    <Link className='button' to="/especialidade">Cadastrar Especialidade</Link>
                     <Link className='button' to="/listarmedico">Listar</Link>
                 </form>
             </div>

@@ -33,8 +33,7 @@ export default function ListarPaciente() {
                     Authorization: idPaciente,
                 }  
             });
-
-            setPaciente(paciente.filter(paciente => paciente.id !== id))
+            setPaciente(paciente.filter(pacientes => paciente.id !== id))
         }catch (err){
             alert('Erro ao deletar paciente, tente novamente.');
         }
