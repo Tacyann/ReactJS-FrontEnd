@@ -13,17 +13,21 @@ import Cobertura from '../Cobertura';
 
 export default function AgendarConsulta() {
 
-    const [consulta, setConsulta] = useState('');
     const [dataConsulta, setdataConsulta] = useState('');
 
     const [medico_id, setMedicoID] = useState(null);
     const [medicos, setMedicos] = useState([]);
     const [paciente_id, setPacienteID] = useState(null);
+    const [valorTotal, setValorTotal] = useState(null);
     const [paciente, setPaciente] = useState([]);
     const [idCobertura, setCoberturaID] = useState(null);
     const [coberturas, setCoberturas] = useState([]);
     const [idFomasPagamento, setFormasID] = useState(null);
     const [formas, setFormas] = useState([]);
+    const [tipoConsulta, setTipoConsulta] = useState(null);
+
+    const opcoes = [{ value: 'PLANO', label: 'PLANO' },
+    { value: 'PARTICULAR', label: 'PARTICULAR' }]
 
     async function consultaMedico() {
         const response = await api.get('medico');
@@ -77,6 +81,8 @@ export default function AgendarConsulta() {
             dataConsulta,
             medico_id,
             paciente_id,
+            cobertura_id: idCobertura,
+            forma_id: idFomasPagamento
         };
         try {
             const response = await api.post('consulta', data);
@@ -121,21 +127,36 @@ export default function AgendarConsulta() {
                         value={dataConsulta}
                         onChange={e => setdataConsulta(e.target.value)}
                     />
-                    <label />
+
                     Selecione o Médico:
                     <Select
                         options={medicos}
                         onChange={e => setMedicoID(e.value)} />
                     <label />
-                    Cobertura:
+
+                    Tipo de consulta:
                     <Select
-                        options={coberturas}
-                        onChange={e => setCoberturaID(e.value)} />
-                    <label />
-                    Escolha a Forma de Pagamento:
+                        options={opcoes}
+                        onChange={e => setTipoConsulta(e.value)} />
+
+                    {(tipoConsulta === 'PLANO') && <label className="label">Cobertura:</label>}
+                    {(tipoConsulta === 'PLANO') &&
                         <Select
-                        options={formas}
-                        onChange={e => setFormasID(e.value)} />
+                            options={coberturas}
+                            onChange={e => setCoberturaID(e.value)} />}
+
+                    {(tipoConsulta === 'PARTICULAR') && <label className="label">Escolha a Forma de Pagamento:</label>}
+                    {(tipoConsulta === 'PARTICULAR') &&
+                        <Select
+                            options={formas}
+                            onChange={e => setFormasID(e.value)} />}
+
+                    {(tipoConsulta === 'PARTICULAR') && <label className="label">Valor Total:</label>}
+                    {(tipoConsulta === 'PARTICULAR') &&
+                        <input placeholder="Valor Total"
+                            value={valorTotal}
+                            onChange={e => setValorTotal(e.target.value)}
+                        />}
 
                     <button className="button" type="submit">Cadastrar</button>
                     <Link className='button' to="/agendar">Listar</Link>
