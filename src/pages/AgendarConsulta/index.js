@@ -80,7 +80,7 @@ export default function AgendarConsulta() {
         };
         try {
             const response = await api.post('consulta', data);
-            alert(`O ID Agendamento: ${response.data.idConulta}`);
+            alert(`O ID Agendamento: ${response.data.idConsulta}`);
         } catch (err) {
             alert('Erro no agendamento, tente novamente.');
         }
@@ -88,9 +88,9 @@ export default function AgendarConsulta() {
 
     async function selecionarPaciente(id) {
         const response = await api.get(`paciente/${id}`);
-        if(response.data) {
+        if (response.data) {
             setPaciente(response.data.nomePaciente)
-        }   
+        }
         setPacienteID(id);
     }
 
@@ -105,8 +105,8 @@ export default function AgendarConsulta() {
                         Voltar.
                         </Link>
                 </section >
-                <form className="form">
-                <label className="label">Informe o ID do Paciente:</label>
+                <form className="form" onSubmit={handleAgendarConsulta}>
+                    <label className="label">Informe o ID do Paciente:</label>
                     <input placeholder="ID do Paciente"
                         value={paciente_id}
                         onChange={e => selecionarPaciente(e.target.value)}
