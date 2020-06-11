@@ -4,9 +4,7 @@ import { FiArrowLeft } from 'react-icons/fi';
 
 import './styles.css';
 
-
 import cheersImg from '../../assets/saude2.png';
-
 
 export default function ReceitaMedica() {
     return (

@@ -111,7 +111,7 @@ export default function AgendarConsulta() {
                         value={paciente_id}
                         onChange={e => selecionarPaciente(e.target.value)}
                     />
-                    <label className="label">Informe o ID do Paciente:</label>
+                    <label className="label">Nome do Paciente:</label>
                     <input placeholder="Nome do Paciente"
                         value={paciente}
                         readOnly={true}
@@ -138,7 +138,7 @@ export default function AgendarConsulta() {
                         onChange={e => setFormasID(e.value)} />
 
                     <button className="button" type="submit">Cadastrar</button>
-                    <Link className='button' to="/consulta">Listar</Link>
+                    <Link className='button' to="/agendar">Listar</Link>
                     <Link className='button' to="/register">Cancelar</Link>
                 </form>
             </div>

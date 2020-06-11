@@ -10,6 +10,7 @@ import AgendarConsulta from './pages/AgendarConsulta';
 import Consulta from './pages/Consulta';
 import ListarMedico from './pages/ListarMedico';
 import ListarPaciente from './pages/ListarPaciente';
+import ListarAgendamento from './pages/ListarAgendamento';
 import Cobertura from './pages/Cobertura';
 import Especialidade from './pages/Especialidade';
 import ReceitaMedica from './pages/ReceitaMedica';
@@ -40,6 +41,7 @@ export default function Routes(){
         <Route path="/listarexame" component={ListarExame}/>
         <Route path="/listarreceita" component={ListarReceita}/>
         <Route path="/consultas/new" component={AgendarConsulta}/>
+        <Route path="/agendar" component={ListarAgendamento}/>
         <Route path="/receita" component={ReceitaMedica}/>
         <Route path="/requisicao" component={ReqExame}/>
         <Route path="/consulta" component={Consulta}/>

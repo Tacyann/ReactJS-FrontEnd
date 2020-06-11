@@ -9,62 +9,87 @@ import cheersImg from '../../assets/saude2.png';
 
 export default function ListarAgendamento() {
 
-    const [cobertura, setCobertura] = useState([]);
+    const [consulta, setConsulta] = useState([]);
 
     const history = useHistory();
 
-    const idCobertura = localStorage.getItem('idCobertura');
-    const descCobertura = localStorage.getItem('descCobertura');
+    const idConsulta = localStorage.getItem('idConsulta');
+    const dataConsulta = localStorage.getItem('dataConsulta');
+    const [medico_id, setMedicoID] = useState(null);
+    const [medicos, setMedicos] = useState([]);
 
-    
+
+    async function consultaMedico() {
+        const response = await api.get('medico');
+        if (response.data) {
+            return response.data.map(medico => {
+                return {
+                    value: medico.idMedico,
+                    label: medico.nomeMedico,
+                }
+            });
+        }
+        return [];
+    }
+ 
+
+    useEffect(async () => {
+        setMedicos(await consultaMedico())
+    }, [])
 
     useEffect(() => {
-        api.get('cobertura', {
+        api.get('consulta', {
             headers: {
-                Authorization: idCobertura,
+                Authorization: idConsulta,
             }
         }).then(Response => {
-            setCobertura(Response.data);
+            setConsulta(Response.data);
         })
-    }, [idCobertura]);
+    }, [idConsulta]);
 
-    async function handleDeleteCobertura(id){
+
+ async function handleDeleteConsulta(idConsulta){
         try{
-            await api.delete(`cobertura/${id}`,{
+            await api.delete(`consulta/${idConsulta}`,{
                 headers: {
-                    Authorization: idCobertura,
+                    Authorization: idConsulta,
                 }  
             });
-            setCobertura(cobertura.filter(cobertura => cobertura.id!==id));
+            setConsulta(consulta.filter(consulta => consulta.idConsulta !== idConsulta))
         }catch (err){
-            alert('Erro ao deletar cobertura, tente novamente.');
+            alert('Erro ao deletar consulta, tente novamente.');
         }
     }
-
     function handleLogout(){
         localStorage.clear();
         history.push('/');
     }
 
     return (
-        <div className="listarcobertura-container">
+        <div className="listaragendamento-container">
             <header>
                 <img src={cheersImg} alt="Logo" />
                 <span>Bem vindo, à Cheers</span>
-                <Link className='button' to="/cobertura">Cadastrar Cobertura</Link>
+                <Link className='button' to="/consultas/new">Agendar Consulta</Link>
                 <button type='button'>
                     <FiPower onClick={handleLogout} size={18} color="#602041" />
                 </button>
             </header>
-            <h1>Coberturas Cadastradas</h1>
+            <h1>Consultas Cadastradas</h1>
             <ul>
-                {cobertura.map(cobertura => (
-                     <li key={cobertura.idCobertura}>
+                {consulta.map(consulta => (
+                     <li key={consulta.idConsulta}>
                      
-                     <strong>Descrição Especialidade:</strong>
-                     <p>{cobertura.descCobertura}</p>
+                     <strong>Data da Consulta:</strong>
+                     <p>{consulta.dataConsulta}</p>
+
+                     <strong>Médico:</strong>
+                     <p>{consulta.medico_id}</p>
+
+                     <strong>Paciente:</strong>
+                     <p>{consulta.paciente_id}</p>
   
-                     <button onClick={()=>handleDeleteCobertura(cobertura.idCobertura)} type='button'>
+                     <button onClick={()=>handleDeleteConsulta(consulta.idConsulta)} type='button'>
                          <FiTrash2 size={20} color="#a8a8b3" />
                      </button>
                  </li>
