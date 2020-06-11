@@ -16,29 +16,14 @@ export default function AgendarConsulta() {
     const [consulta, setConsulta] = useState('');
     const [dataConsulta, setdataConsulta] = useState('');
 
-    const [especialidade_id, setEspecialidadeID] = useState(null);
-    const [especialidades, setEspecialidades] = useState([]);
     const [medico_id, setMedicoID] = useState(null);
     const [medicos, setMedicos] = useState([]);
     const [paciente_id, setPacienteID] = useState(null);
-    const [pacientes, setPacientes] = useState([]);
+    const [paciente, setPaciente] = useState([]);
     const [idCobertura, setCoberturaID] = useState(null);
     const [coberturas, setCoberturas] = useState([]);
     const [idFomasPagamento, setFormasID] = useState(null);
     const [formas, setFormas] = useState([]);
-
-    async function consultaEspecialidade() {
-        const response = await api.get('especialidade');
-        if (response.data) {
-            return response.data.map(especialidade => {
-                return {
-                    value: especialidade.idEspecialidade,
-                    label: especialidade.descEspecialidade,
-                }
-            });
-        }
-        return [];
-    }
 
     async function consultaMedico() {
         const response = await api.get('medico');
@@ -80,18 +65,8 @@ export default function AgendarConsulta() {
     }
 
     useEffect(async () => {
-        setEspecialidades(await consultaEspecialidade())
-    }, [])
-
-    useEffect(async () => {
         setMedicos(await consultaMedico())
-    }, [])
-
-    useEffect(async () => {
         setCoberturas(await consultaCobertura())
-    }, [])
-
-    useEffect(async () => {
         setFormas(await consultaForma())
     }, [])
 
@@ -111,6 +86,14 @@ export default function AgendarConsulta() {
         }
     }
 
+    async function selecionarPaciente(id) {
+        const response = await api.get(`paciente/${id}`);
+        if(response.data) {
+            setPaciente(response.data.nomePaciente)
+        }   
+        setPacienteID(id);
+    }
+
     return (
         <div className="agendarconsulta-container">
             <div className="content">
@@ -123,32 +106,37 @@ export default function AgendarConsulta() {
                         </Link>
                 </section >
                 <form className="form">
+                <label className="label">Informe o ID do Paciente:</label>
+                    <input placeholder="ID do Paciente"
+                        value={paciente_id}
+                        onChange={e => selecionarPaciente(e.target.value)}
+                    />
+                    <label className="label">Informe o ID do Paciente:</label>
                     <input placeholder="Nome do Paciente"
-                        value={pacientes.nomePaciente}
-                        onChange={e => setPacientes(e.target.value)}
+                        value={paciente}
+                        readOnly={true}
                     />
                     <label className="label">Escolha uma data:</label>
                     <input type="date" placeholder="Data da Consulta:"
                         value={dataConsulta}
                         onChange={e => setdataConsulta(e.target.value)}
                     />
-                    <label/> Informe a Especialidade:
-                    <Select
-                        options={especialidades}
-                        onChange={e => setEspecialidadeID(e.value)} />
-                    <label/> Selecione o Médico:
+                    <label />
+                    Selecione o Médico:
                     <Select
                         options={medicos}
                         onChange={e => setMedicoID(e.value)} />
-                    <label/> Cobertura: 
+                    <label />
+                    Cobertura:
                     <Select
                         options={coberturas}
                         onChange={e => setMedicoID(e.value)} />
-                    <label/> Escolha a Forma de Pagamento:
+                    <label />
+                    Escolha a Forma de Pagamento:
                         <Select
                         options={formas}
                         onChange={e => setMedicoID(e.value)} />
-     
+
                     <button className="button" type="submit">Cadastrar</button>
                     <Link className='button' to="/consulta">Listar</Link>
                     <Link className='button' to="/register">Cancelar</Link>
