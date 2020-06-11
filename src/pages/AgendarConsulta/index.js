@@ -130,12 +130,12 @@ export default function AgendarConsulta() {
                     Cobertura:
                     <Select
                         options={coberturas}
-                        onChange={e => setMedicoID(e.value)} />
+                        onChange={e => setCoberturaID(e.value)} />
                     <label />
                     Escolha a Forma de Pagamento:
                         <Select
                         options={formas}
-                        onChange={e => setMedicoID(e.value)} />
+                        onChange={e => setFormasID(e.value)} />
 
                     <button className="button" type="submit">Cadastrar</button>
                     <Link className='button' to="/consulta">Listar</Link>
